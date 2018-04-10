@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.haotiao.proxy.cache.impl.CacheServiceFactoryBean" init-method="startup" destroy-method="shutdown">
+        <property name="strategy" value="Redis"/>
+        <property name="properties">
+            <props>
+                <prop key="cache.redis.url">redis://passwd@127.0.0.1:6379/0</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
