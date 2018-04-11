@@ -8,6 +8,10 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
+    <properties>
+        <module.version>0.0.1-SNAPSHOT</module.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -20,17 +24,17 @@
             <dependency>
                 <groupId>com.haotian.proxy</groupId>
                 <artifactId>proxy-cache-api</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${module.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.haotian.proxy</groupId>
                 <artifactId>proxy-cache-impl</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${module.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.haotian.proxy</groupId>
                 <artifactId>proxy-cache-redis</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${module.version}</version>
             </dependency>
             <dependency>
                 <groupId>redis.clients</groupId>
@@ -45,6 +49,43 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.handlers</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.json</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <distributionManagement>
         <repository>
