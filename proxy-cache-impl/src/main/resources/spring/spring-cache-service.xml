@@ -7,7 +7,7 @@
         <property name="strategy" value="Redis"/>
         <property name="properties">
             <props>
-                <prop key="cache.redis.url">redis://passwd@127.0.0.1:6379/0</prop>
+                <prop key="cache.redis.url">${cache.redis.url}</prop>
             </props>
         </property>
     </bean>
